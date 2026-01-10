@@ -1,0 +1,19 @@
+{
+  "name": "scatty",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build:shared": "npm run build -w @scatty/shared",
+    "server": "npm run dev -w @scatty/server",
+    "mobile": "npm run start -w @scatty/mobile",
+    "dev": "concurrently \"npm run server\" \"npm run mobile\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}

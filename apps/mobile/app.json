@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Scatty",
+    "slug": "scatty",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "scatty",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0F0F1A"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.scatty.app",
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "Scatty needs access to speech recognition to understand your voice commands.",
+        "NSMicrophoneUsageDescription": "Scatty needs access to your microphone to hear you.",
+        "NSCameraUsageDescription": "Scatty needs access to your camera to see what you show it."
+      }
+    },
+    "android": {
+      "package": "com.scatty.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Scatty to access your camera to see what you show it."
+        }
+      ],
+      [
+        "@react-native-voice/voice",
+        {
+          "microphonePermission": "Allow Scatty to access your microphone to hear you.",
+          "speechRecognitionPermission": "Allow Scatty to use speech recognition."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
