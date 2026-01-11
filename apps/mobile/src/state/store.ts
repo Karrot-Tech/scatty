@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { ScattyState, Message, generateSessionId, generateMessageId } from '@scatty/shared';
+import Constants from 'expo-constants';
 
 interface ScattyStore {
   // Connection
@@ -35,7 +36,7 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   // Initial state
   // Use 10.0.2.2 for Android emulator, localhost for iOS simulator
   // For physical devices, change this in Settings
-  serverUrl: 'http://192.168.1.117:3001',
+  serverUrl: (Constants.expoConfig?.extra?.serverUrl as string) || 'http://localhost:3001',
   connected: false,
   sessionId: generateSessionId(),
   state: 'idle',
