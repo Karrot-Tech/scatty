@@ -8,6 +8,8 @@
   ],
   "scripts": {
     "build:shared": "npm run build -w @scatty/shared",
+    "build:server": "npm run build -w @scatty/server",
+    "start:server": "npm run start -w @scatty/server",
     "server": "npm run dev -w @scatty/server",
     "mobile": "npm run start -w @scatty/mobile",
     "dev": "concurrently \"npm run server\" \"npm run mobile\"",
