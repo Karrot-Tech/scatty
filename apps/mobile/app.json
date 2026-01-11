@@ -6,10 +6,16 @@
     "orientation": "portrait",
     "scheme": "scatty",
     "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
     "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
       "backgroundColor": "#FFF9FB"
     },
     "assetBundlePatterns": ["**/*"],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "web": {
       "bundler": "metro",
       "output": "single",
@@ -26,10 +32,20 @@
     },
     "android": {
       "package": "com.scatty.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFF9FB"
+      },
       "permissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.CAMERA"
       ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "YOUR_PROJECT_ID_HERE"
+      }
     },
     "plugins": [
       "expo-router",
