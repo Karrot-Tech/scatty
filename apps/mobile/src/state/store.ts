@@ -31,7 +31,7 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   // Initial state
   // Use 10.0.2.2 for Android emulator, localhost for iOS simulator
   // For physical devices, change this in Settings
-  serverUrl: 'http://10.0.2.2:3001',
+  serverUrl: 'http://192.168.1.117:3001',
   connected: false,
   sessionId: generateSessionId(),
   state: 'idle',
