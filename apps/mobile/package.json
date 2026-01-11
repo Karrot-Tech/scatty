@@ -9,12 +9,17 @@
     "web": "expo start --web",
     "web:secure": "expo start --web --https"
   },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": ["@scatty/shared", "socket.io-client", "expo-av"]
+      }
+    }
+  },
   "overrides": {
-    "@expo/metro-runtime": "~4.0.1",
-    "@expo/config-plugins": "~9.0.0"
+    "@expo/metro-runtime": "~4.0.1"
   },
   "dependencies": {
-    "@expo/config-plugins": "~9.0.0",
     "@expo/metro-runtime": "~4.0.1",
     "@expo/vector-icons": "14.0.4",
     "@react-native-voice/voice": "^3.2.4",
