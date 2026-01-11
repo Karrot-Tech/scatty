@@ -9,7 +9,17 @@
     "splash": {
       "backgroundColor": "#FFF9FB"
     },
-    "assetBundlePatterns": ["**/*"],
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.scatty.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA"
+      ]
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "web": {
       "bundler": "metro",
       "output": "single",
@@ -23,13 +33,6 @@
         "NSMicrophoneUsageDescription": "Scatty needs access to your microphone to hear you.",
         "NSCameraUsageDescription": "Scatty needs access to your camera to see what you show it."
       }
-    },
-    "android": {
-      "package": "com.scatty.app",
-      "permissions": [
-        "android.permission.RECORD_AUDIO",
-        "android.permission.CAMERA"
-      ]
     },
     "plugins": [
       "expo-router",
@@ -45,10 +48,19 @@
           "microphonePermission": "Allow Scatty to access your microphone to hear you.",
           "speechRecognitionPermission": "Allow Scatty to use speech recognition."
         }
-      ]
+      ],
+      "./plugins/withAndroidManifestToolsReplace"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "727322cf-d1f8-49ae-8678-cf2cc1fe478f"
+      }
     }
   }
 }
