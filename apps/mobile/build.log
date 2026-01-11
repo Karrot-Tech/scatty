@@ -1,0 +1,344 @@
+The field "cli.appVersionSource" is not set, but it will be required in the future. Learn more: https://docs.expo.dev/build-reference/app-versions/
+Resolved "development" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+No environment variables with visibility "Plain text" and "Sensitive" found for the "development" environment on EAS.
+
+The field "cli.appVersionSource" is not set, but it will be required in the future. Learn more: https://docs.expo.dev/build-reference/app-versions/
+✔ Using remote Android credentials (Expo server)
+✔ Using Keystore from configuration: Build Credentials y7NEymRgmi (default)
+⠋ Computing project fingerprint⠙ Computing project fingerprint⠹ Computing project fingerprint⠸ Computing project fingerprint⠼ Computing project fingerprint⠴ Computing project fingerprint⠦ Computing project fingerprint⠧ Computing project fingerprint⠇ Computing project fingerprint⠏ Computing project fingerprint⠋ Computing project fingerprint⠙ Computing project fingerprint✔ Computed project fingerprint
+ANDROID_NDK_HOME environment variable was not specified, continuing build without NDK
+[SETUP_WORKINGDIR] Preparing workingdir /var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b
+[START_BUILD] Starting build
+  "job": {
+    "type": "managed",
+    "platform": "android",
+    "projectRootDirectory": "apps/mobile",
+    "projectArchive": {
+      "type": "PATH",
+      "path": "/var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-cli-nodejs/755aa575-10ff-4834-b57f-b28df46903eb.tar.gz"
+    },
+    "builderEnvironment": {
+      "env": {}
+    },
+    "cache": {
+      "disabled": false,
+      "paths": [],
+      "clear": false
+    },
+    "updates": {},
+    "developmentClient": true,
+    "buildType": "apk",
+    "username": "pavanpaik",
+    "experimental": {},
+    "mode": "build",
+    "triggeredBy": "EAS_CLI",
+    "appId": "727322cf-d1f8-49ae-8678-cf2cc1fe478f",
+    "initiatingUserId": "c3c2903b-63dd-4e30-aad3-fb0000cac91b"
+  }
+Local build, skipping project archive refresh
+[READ_PACKAGE_JSON] Using package.json:
+[READ_PACKAGE_JSON] {
+  "name": "@scatty/mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "web:secure": "expo start --web --https"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "^6.1.2",
+    "@expo/vector-icons": "14.0.4",
+    "@react-native-voice/voice": "^3.2.4",
+    "@scatty/shared": "*",
+    "expo": "~52.0.0",
+    "expo-av": "~15.0.1",
+    "expo-camera": "~16.0.0",
+    "expo-dev-client": "~5.0.20",
+    "expo-font": "~13.0.0",
+    "expo-linking": "~7.0.0",
+    "expo-router": "~4.0.0",
+    "expo-speech": "~13.0.0",
+    "expo-status-bar": "~2.0.0",
+    "react": "18.3.1",
+    "react-dom": "^18.3.1",
+    "react-native": "0.76.5",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.1.0",
+    "react-native-web": "^0.21.2",
+    "socket.io-client": "^4.7.4",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}
+[INSTALL_DEPENDENCIES] We detected that 'apps/mobile' is a npm workspace
+[INSTALL_DEPENDENCIES] Running "npm install" in /var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build directory
+[INSTALL_DEPENDENCIES] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+[INSTALL_DEPENDENCIES] npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+[INSTALL_DEPENDENCIES] npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+[INSTALL_DEPENDENCIES] npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+[INSTALL_DEPENDENCIES] npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+[INSTALL_DEPENDENCIES] npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+[INSTALL_DEPENDENCIES] npm warn deprecated glob@7.1.6: Glob versions prior to v9 are no longer supported
+[INSTALL_DEPENDENCIES] npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+[INSTALL_DEPENDENCIES] npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+[INSTALL_DEPENDENCIES] npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+[INSTALL_DEPENDENCIES] npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+[INSTALL_DEPENDENCIES] added 1046 packages, and audited 1050 packages in 10s
+[INSTALL_DEPENDENCIES] 97 packages are looking for funding
+[INSTALL_DEPENDENCIES]   run `npm fund` for details
+[INSTALL_DEPENDENCIES] 5 vulnerabilities (4 moderate, 1 critical)
+[INSTALL_DEPENDENCIES] 
+[INSTALL_DEPENDENCIES] To address all issues (including breaking changes), run:
+[INSTALL_DEPENDENCIES]   npm audit fix --force
+[INSTALL_DEPENDENCIES] 
+[INSTALL_DEPENDENCIES] Run `npm audit` for details.
+The NODE_ENV environment variable is required but was not specified. Ensure the project is bundled with Expo CLI or NODE_ENV is set.
+Proceeding without mode-specific .env
+[READ_APP_CONFIG] Using app configuration:
+[READ_APP_CONFIG] {
+  "name": "Scatty",
+  "slug": "scatty",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "scheme": "scatty",
+  "userInterfaceStyle": "light",
+  "splash": {
+    "backgroundColor": "#FFF9FB"
+  },
+  "icon": "./assets/icon.png",
+  "android": {
+    "package": "com.scatty.app",
+    "permissions": [
+      "android.permission.RECORD_AUDIO",
+      "android.permission.CAMERA"
+    ]
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "web": {
+    "bundler": "metro",
+    "output": "single",
+    "favicon": "./assets/favicon.png"
+  },
+  "ios": {
+    "supportsTablet": false,
+    "bundleIdentifier": "com.scatty.app",
+    "infoPlist": {
+      "NSSpeechRecognitionUsageDescription": "Scatty needs access to speech recognition to understand your voice commands.",
+      "NSMicrophoneUsageDescription": "Scatty needs access to your microphone to hear you.",
+      "NSCameraUsageDescription": "Scatty needs access to your camera to see what you show it."
+    }
+  },
+  "plugins": [
+    "expo-router",
+    [
+      "expo-camera",
+      {
+        "cameraPermission": "Allow Scatty to access your camera to see what you show it."
+      }
+    ],
+    [
+      "@react-native-voice/voice",
+      {
+        "microphonePermission": "Allow Scatty to access your microphone to hear you.",
+        "speechRecognitionPermission": "Allow Scatty to use speech recognition."
+      }
+    ]
+  ],
+  "experiments": {
+    "typedRoutes": true
+  },
+  "extra": {
+    "router": {
+      "origin": false
+    },
+    "eas": {
+      "projectId": "727322cf-d1f8-49ae-8678-cf2cc1fe478f"
+    }
+  },
+  "sdkVersion": "52.0.0",
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ]
+}
+[RUN_EXPO_DOCTOR] Running "expo doctor"
+[RUN_EXPO_DOCTOR] Running 17 checks on your project...
+[RUN_EXPO_DOCTOR] 12/17 checks passed. 5 checks failed. Possible issues detected:
+[RUN_EXPO_DOCTOR] Use the --verbose flag to see more details about passed checks.
+[RUN_EXPO_DOCTOR] 
+[RUN_EXPO_DOCTOR] ✖ Check Expo config (app.json/ app.config.js) schema
+[RUN_EXPO_DOCTOR] Error validating asset fields in /private/var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build/apps/mobile/app.json:
+[RUN_EXPO_DOCTOR]  Field: icon - the file extension should match the content, but the file extension is .png while the file content at './assets/icon.png' is of type jpg.
+[RUN_EXPO_DOCTOR]  Field: icon - field 'icon' should point to .png image but the file at './assets/icon.png' has type jpg.
+[RUN_EXPO_DOCTOR] Advice:
+[RUN_EXPO_DOCTOR] Resolve schema errors in your app config. Learn more: https://docs.expo.dev/workflow/configuration/
+[RUN_EXPO_DOCTOR] ✖ Check for issues with Metro config
+[RUN_EXPO_DOCTOR] - "watchFolders" does not contain all entries from Expo's defaults
+[RUN_EXPO_DOCTOR] - "resolver.disableHierarchicalLookup" mismatch. Expected false, got: true
+[RUN_EXPO_DOCTOR] Advice:
+[RUN_EXPO_DOCTOR] Modifying the "metro.config.js" is dangerous and may lead to unintended consequences.
+[RUN_EXPO_DOCTOR] Unless you know what these overrides do, remove them and adopt the recommended values from "expo/metro-config".
+[RUN_EXPO_DOCTOR] 
+[RUN_EXPO_DOCTOR] ✖ Check that native modules use compatible support package versions for installed Expo SDK
+[RUN_EXPO_DOCTOR] Expected package @expo/config-plugins@~9.0.0
+[RUN_EXPO_DOCTOR] Found invalid:
+[RUN_EXPO_DOCTOR]   @expo/config-plugins@2.0.4
+[RUN_EXPO_DOCTOR]   (for more info, run: npm why @expo/config-plugins)
+[RUN_EXPO_DOCTOR] Advice:
+[RUN_EXPO_DOCTOR] Upgrade dependencies that are using the invalid package versions.
+[RUN_EXPO_DOCTOR] 
+[RUN_EXPO_DOCTOR] ✖ Validate packages against React Native Directory package metadata
+[RUN_EXPO_DOCTOR] The following issues were found when validating your dependencies against React Native Directory:
+[RUN_EXPO_DOCTOR]   Unmaintained: expo-av
+[RUN_EXPO_DOCTOR]   No metadata available: @scatty/shared, socket.io-client
+[RUN_EXPO_DOCTOR] Advice:
+[RUN_EXPO_DOCTOR] Use libraries that are actively maintained and support the New Architecture. Find alternative libraries with https://reactnative.directory.
+[RUN_EXPO_DOCTOR] Add packages to expo.doctor.reactNativeDirectoryCheck.exclude in package.json to selectively skip validations, if the warning is not relevant.
+[RUN_EXPO_DOCTOR] Update React Native Directory to include metadata for unknown packages. Alternatively, set expo.doctor.reactNativeDirectoryCheck.listUnknownPackages in package.json to false to skip warnings about packages with no metadata, if the warning is not relevant.
+[RUN_EXPO_DOCTOR] 
+[RUN_EXPO_DOCTOR] ✖ Check that packages match versions required by installed Expo SDK
+[RUN_EXPO_DOCTOR] The following packages should be updated for best compatibility with the installed expo version:
+[RUN_EXPO_DOCTOR]   @expo/metro-runtime@6.1.2 - expected version: ~4.0.1
+[RUN_EXPO_DOCTOR]   react-native@0.76.5 - expected version: 0.76.9
+[RUN_EXPO_DOCTOR]   react-native-screens@4.1.0 - expected version: ~4.4.0
+[RUN_EXPO_DOCTOR]   react-native-web@0.21.2 - expected version: ~0.19.13
+[RUN_EXPO_DOCTOR] Your project may not work correctly until you install the expected versions of the packages.
+[RUN_EXPO_DOCTOR] Found outdated dependencies
+[RUN_EXPO_DOCTOR] Advice:
+[RUN_EXPO_DOCTOR] Use 'npx expo install --check' to review and upgrade your dependencies.
+[RUN_EXPO_DOCTOR] To ignore specific packages, add them to "expo.install.exclude" in package.json. Learn more: https://expo.fyi/dependency-validation
+[RUN_EXPO_DOCTOR] 5 checks failed, indicating possible issues with the project.
+[RUN_EXPO_DOCTOR] Command "expo doctor" failed.
+Error: npx -y expo-doctor exited with non-zero code: 1
+    at ChildProcess.completionListener (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/spawn-async/build/spawnAsync.js:42:23)
+    at Object.onceWrapper (node:events:634:26)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    ...
+    at spawnAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/spawn-async/build/spawnAsync.js:7:23)
+    at spawn (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/turtle-spawn/dist/index.js:16:47)
+    at runExpoDoctor (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/common/setup.js:124:52)
+    at async /Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/common/setup.js:103:17
+    at async BuildContext.runBuildPhase (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/context.js:123:28)
+    at async setupAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/common/setup.js:101:9)
+    at async buildAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/android.js:72:5)
+    at async runBuilderWithHooksAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/common.js:12:13)
+    at async Object.androidBuilder (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/android.js:59:16)
+    at async buildAndroidAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/eas-cli-local-build-plugin/dist/android.js:44:12)
+[PREBUILD] The android project is malformed, project files will be cleared and reinitialized.
+[PREBUILD] - Clearing android
+[PREBUILD] ✔ Cleared android code
+[PREBUILD] - Creating native directory (./android)
+[PREBUILD] ✔ Created native directory
+[PREBUILD] - Updating package.json
+[PREBUILD] › Using current versions instead of recommended react-native@0.76.9.
+[PREBUILD] - Updating package.json
+[PREBUILD] ✔ Updated package.json | no changes
+[PREBUILD] - Running prebuild
+[PREBUILD] » android: userInterfaceStyle: Install expo-system-ui in your project to enable this feature.
+[PREBUILD] - Running prebuild
+[PREBUILD] ✔ Finished prebuild
+[PREBUILD] We detected that 'apps/mobile' is a npm workspace
+[PREBUILD] Running "npm install" in /var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build directory
+[PREBUILD] up to date, audited 1050 packages in 1s
+[PREBUILD] 
+[PREBUILD] 97 packages are looking for funding
+[PREBUILD]   run `npm fund` for details
+[PREBUILD] 5 vulnerabilities (4 moderate, 1 critical)
+[PREBUILD] 
+[PREBUILD] To address all issues (including breaking changes), run:
+[PREBUILD]   npm audit fix --force
+[PREBUILD] 
+[PREBUILD] Run `npm audit` for details.
+[PREPARE_CREDENTIALS] Writing secrets to the project's directory
+[PREPARE_CREDENTIALS] Injecting signing config into build.gradle
+[RUN_GRADLEW] Running 'gradlew :app:assembleDebug' in /var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build/apps/mobile/android
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors
+[RUN_GRADLEW] > Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors
+[RUN_GRADLEW] > Task :gradle-plugin:shared:processResources NO-SOURCE
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:pluginDescriptors
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:processResources
+[RUN_GRADLEW] > Task :gradle-plugin:shared:compileKotlin
+[RUN_GRADLEW] > Task :gradle-plugin:shared:compileJava NO-SOURCE
+[RUN_GRADLEW] > Task :gradle-plugin:shared:classes UP-TO-DATE
+[RUN_GRADLEW] > Task :gradle-plugin:shared:jar
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:compileKotlin
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:classes
+[RUN_GRADLEW] > Task :gradle-plugin:settings-plugin:jar
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:checkKotlinGradlePluginConfigurationErrors
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:pluginDescriptors
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:processResources
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:processResources
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:compileKotlin
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:classes
+[RUN_GRADLEW] > Task :gradle-plugin:react-native-gradle-plugin:jar
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:compileKotlin
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:compileJava NO-SOURCE
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:classes
+[RUN_GRADLEW] > Task :expo-dev-launcher-gradle-plugin:jar
+[RUN_GRADLEW] > Configure project :app
+[RUN_GRADLEW] ℹ️  [33mApplying gradle plugin[0m '[32mexpo-dev-launcher-gradle-plugin[0m' (expo-dev-launcher@5.0.35)
+[RUN_GRADLEW] FAILURE: Build completed with 2 failures.
+[RUN_GRADLEW] 1: Task failed with an exception.
+[RUN_GRADLEW] -----------
+[RUN_GRADLEW] * Where:
+[RUN_GRADLEW] Script '/private/var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build/node_modules/expo-modules-autolinking/scripts/android/autolinking_implementation.gradle' line: 453
+[RUN_GRADLEW] * What went wrong:
+[RUN_GRADLEW] A problem occurred evaluating project ':expo'.
+[RUN_GRADLEW] > A problem occurred configuring project ':expo-av'.
+[RUN_GRADLEW]    > SDK location not found. Define a valid SDK location with an ANDROID_HOME environment variable or by setting the sdk.dir path in your project's local properties file at '/private/var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build/apps/mobile/android/local.properties'.
+[RUN_GRADLEW] * Try:
+[RUN_GRADLEW] > Run with --stacktrace option to get the stack trace.
+[RUN_GRADLEW] > Run with --info or --debug option to get more log output.
+[RUN_GRADLEW] > Run with --scan to get full insights.
+[RUN_GRADLEW] > Get more help at https://help.gradle.org.
+[RUN_GRADLEW] ==============================================================================
+[RUN_GRADLEW] 2: Task failed with an exception.
+[RUN_GRADLEW] -----------
+[RUN_GRADLEW] * Where:
+[RUN_GRADLEW] Script '/private/var/folders/33/xjdj0lnj18l9k1zh14jmvrd00000gn/T/eas-build-local-nodejs/9dc1cb80-efe9-40ca-b60f-9aedac1dad4b/build/node_modules/expo-modules-core/android/ExpoModulesCorePlugin.gradle' line: 95
+[RUN_GRADLEW] * What went wrong:
+[RUN_GRADLEW] A problem occurred configuring project ':expo'.
+[RUN_GRADLEW] > Could not get unknown property 'release' for SoftwareComponent container of type org.gradle.api.internal.component.DefaultSoftwareComponentContainer.
+[RUN_GRADLEW] * Try:
+[RUN_GRADLEW] > Run with --stacktrace option to get the stack trace.
+[RUN_GRADLEW] > Run with --info or --debug option to get more log output.
+[RUN_GRADLEW] > Run with --scan to get full insights.
+[RUN_GRADLEW] > Get more help at https://help.gradle.org.
+[RUN_GRADLEW] ==============================================================================
+[RUN_GRADLEW] BUILD FAILED in 20s
+[RUN_GRADLEW] 18 actionable tasks: 18 executed
+[RUN_GRADLEW] Error: Gradle build failed with unknown error. See logs for the "Run gradlew" phase for more information.
+
+Build failed
+Gradle build failed with unknown error. See logs for the "Run gradlew" phase for more information.
+Error: Gradle build failed with unknown error. See logs for the "Run gradlew" phase for more information.
+    at resolveBuildPhaseErrorAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/buildErrors/detectError.js:69:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async BuildContext.handleBuildPhaseErrorAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/context.js:192:28)
+    at async BuildContext.runBuildPhase (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/context.js:135:35)
+    at async buildAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/android.js:183:5)
+    at async runBuilderWithHooksAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/common.js:12:13)
+    at async Object.androidBuilder (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/@expo/build-tools/dist/builders/android.js:59:16)
+    at async buildAndroidAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/eas-cli-local-build-plugin/dist/android.js:44:12)
+    at async buildAsync (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/eas-cli-local-build-plugin/dist/build.js:55:29)
+    at async main (/Users/ppai/.npm/_npx/51b74c4db9e60cb6/node_modules/eas-cli-local-build-plugin/dist/main.js:16:9)
+npx -y eas-cli-local-build-plugin@1.0.243 eyJqb2IiOnsidHlwZSI6Im1hbmFnZWQiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJwcm9qZWN0Um9vdERpcmVjdG9yeSI6ImFwcHMvbW9iaWxlIiwicHJvamVjdEFyY2hpdmUiOnsidHlwZSI6IlBBVEgiLCJwYXRoIjoiL3Zhci9mb2xkZXJzLzMzL3hqZGowbG5qMThsOWsxemgxNGptdnJkMDAwMDBnbi9UL2Vhcy1jbGktbm9kZWpzLzc1NWFhNTc1LTEwZmYtNDgzNC1iNTdmLWIyOGRmNDY5MDNlYi50YXIuZ3oifSwiYnVpbGRlckVudmlyb25tZW50Ijp7ImVudiI6e319LCJjYWNoZSI6eyJkaXNhYmxlZCI6ZmFsc2UsInBhdGhzIjpbXSwiY2xlYXIiOmZhbHNlfSwic2VjcmV0cyI6eyJidWlsZENyZWRlbnRpYWxzIjp7ImtleXN0b3JlIjp7ImRhdGFCYXNlNjQiOiIvdTMrN1FBQUFBSUFBQUFCQUFBQUFRQWdZbU0wWVRNME9XUXdObVV4WldVeE4yRmpNMkUzWVdReE9UbGtZbUV3WXpZQUFBR2JyUk5EbVFBQUJRTXdnZ1QvTUE0R0Npc0dBUVFCS2dJUkFRRUZBQVNDQk90OXlaV21MSDliSUpwZ21LenNXbGhzVEVDb3RXaVJiak5OazR6YUQ0UytWQUpTaStOUVZ0RUtmS1F4OGR3UzVDeU5vWDlpM3BGU1B6WUFiUjVVZXhnTUwrejlDK1NVSE5EcmkrOTIzVnVUaXh4ME1hYVVKOWNBYjJzRG1BTU9URE1lR2lsV1Y3Nzl4aDRLRmt0RzBDRCtCZnlBd3FlQXI3U1k4c0sxUW9wOTY5dDZNMCtNQXBIblhmTUlRTksrVFZ0OFdWZEZ0Q2FyK24wU3VkYTA5NU5WMXFvdllBU2lxSC9kaFo2dGV4NWp3eDZDTFdjZ0hkWGhhTG1pNXdIL1BuU1dDbDU2ZHBhSHlwWFdWTDY2N29ZT0NrSlhhTGZZK3pTbDh2cW5BU3FUS0NTeFVWZWx3dDNIclc2OENxbDFaeGJsMzJOQkZpZUU5KzYrNDBVRUI4Q3hRSEhuQmkxVll4WUhaWEtPQi9IYzdxSVZHQkRrOG9KWE5BT1ZLRHdTUlpLQllxdGZrU1dZZkhxdE9TaVVkR1hkRzNGOUZ4dlBiNC9vaGFUTjU1YjVNOUUxbGxPTXY4MzFzUGJIWERKOWp1NHhCUlNLWTJkZXRpRG93WThRa04yZklBYVAzOU93bGU1NGI0VDJyRFZWNVdHUUI2UnVMU3JrcFl1Q2ZxblRqOHJHdjJXM3Q0emJCK1NQTWhlRWRNei90WW1udWlhU3hxVkhDU3dzZEFEc3FjQnRybHdMbWJVMlRqU3JGY0tLVVJsTkM3TVBQSlVUVGh1TDczem93VTQwMlBRMXAvc1FFOHBSQTFWZktzaFBvSmQvRnA0ZnFjRG5DVFJQZEZIZ2ltZ05PUDgvRStQZGZpR04wT3VpV1hqUHgwSGpxa3Q0dmVxalluSXB3SGZXKzZ2K0dVaElsMU4ra2J4dWZyaUg5cjdTZ29kRFNjTGY5MVdPeVdzbDVWN2taWDhtU1VTeWcwVEdzbGl5WE5tYmxNeEJjWWxyNWdkd0h0UnJnNE4zdk51RE04OUx2bUVHQmlQODZ6L0l2dlQ5b1Y3dUNOc2lYc3Y3YWdZQlpHUW40MlFtcnpybE5DV0lyQUp5ZG5PM1luMkpBWC94Uk1NV1lGdU1iZ3JxSENaM3B6M0NrUWpPUlFvWncwQ0JBZTAzTUZmcGp6azNWbSsyMVNpeWRpZmxuYjgraUpYdjdRcGFRYm45a1hSc1RMTUlia2lyWmpjWVBOYXhVN1dWRCtIckFLTFNTZE4rcllVU1VaNi94S3p1YUloay9ra3JqUFA3cXBmL2YwcWIwZmZEWlJxeEgzMUtMQjJpRFVlNmxVbFQycjViYU9EWXJnNHhNcU5nTEYyM2ZqOEpaZVhyUDFNVitTNWFKQ3VMQlBsSmN1MFNsSzJFT01nR2JWaXM5cFBKR0NyaWovcmdBVlUvVHMxcC9oQ1lyNzFCbFFvblQvdXVLcytpVjZ2eTFTaXpFSjJsMjRYZHhRcWNDNXNDM0tHRUVaU1ZYbVdPSEJrZndER1IxNkVUUTdwWmtqVlBzeURjdzlhV2ROTmJteFJPZVllS25HcHgyd3Z4T1FOZWwzUjRmREZVZS9qL3FFSWI4bzZlWkl5RFcxendGcVQ5aHJsa3ZXZGJMOC9iWkZ6NVV4MjhKOGl6aHBOc1huT2F3TkZFTFpQMVl3NTNzS1YzNjBqQW9Pbm1NSHF6SVordnZLZWhIbGdxT3NBYTZwVWt1SVpUZFZscHo1bHdaU1hET1gvRTFkQmZwTjhBSG01YjZMeS9kZktsd21zVTdQUUJyYzFUOGVwUXJ3R3NRZkcvTUVjc2ZMUTMwSXZCcm1GVU5rN2lPS3JSUjV6RWlzL01wOFVVQ2RMTHVTWC94eEN5aU5vTTUwb3hTV2VKZ09BdlhzS0RJVGRnYnRldFQxTWhVNmFYSkFqNmJpblVrZ2JUMGZPWU5mVGtEVm9ZMytOOFQ5elR6UVZjK1J0QlovcllNWUZvdUdpUVV0ekNiQmE1b2xiL0RIWHBIQ0NzMEFweHhKZ0hPZ1BPVStqdVJ6SmExbjFnc0l2MVFqTkNyaklVeTIxbE0vemYzWjFtRDN2d3hMdndWRGdURysvbS9FMVJYdTJETjk1MVBHYnRjbnhScklYem9yRnJUTDhEdTZEeWx4dEpQWEh0Q0w4cW4zR0o1WTA0dTlPOXFGbjNsQjZsUkpyaWZZU3FCQnY2MGdFM1ZabnJud0dqUmdBQUFBRUFCVmd1TlRBNUFBQURNakNDQXk0d2dnSVdvQU1DQVFJQ0NRRHF3aDFYODhiL2dUQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1Rc3dDUVlEVlFRR0V3SlZVekVKTUFjR0ExVUVDQk1BTVFrd0J3WURWUVFIRXdBeENUQUhCZ05WQkFvVEFERUpNQWNHQTFVRUN4TUFNUWt3QndZRFZRUURFd0F3SUJjTk1qWXdNVEV4TVRJME1URTVXaGdQTWpBMU16QTFNamt4TWpReE1UbGFNRVF4Q3pBSkJnTlZCQVlUQWxWVE1Ra3dCd1lEVlFRSUV3QXhDVEFIQmdOVkJBY1RBREVKTUFjR0ExVUVDaE1BTVFrd0J3WURWUVFMRXdBeENUQUhCZ05WQkFNVEFEQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5LMVkrQXVINXdzYTQ2eXpIQUV6UU14MVIvZVc0NUY4bUpZallWQTV5RVRjSkZHSHdsYkdhVE1wcUdQSUJkRlZqeEtpNTBDbWdjYThkZ0ZUeWordjlvTk0xcVJhMXNCWE5zSGd1SjBmOFNTZ2pnU00vNUhUVFIyOXlHdjA3ZWlaOG96c0RGaE1iMXR3NjBhME9NOGpLMk1ycFpURU1EOUJscVA2SXpDU1JyT2tDcEV1UzgrNkVhU2JFZ08rYUs4TXdieGZoNTFHczZNQXFJb3prZ0JRZ1JEZ1A3UWtnS0dLUHhJc24zL0pYbHJPQ1pwSXdCUGs4MXA1bTQ0dzVSQUhiVjJuMlYvR010QmZycVpnbmVGL28vMzNWbUlVYk5JOEFXTUpsMVdKcGhsaUh6QkhxRWpCVm16dGZGN0E0N3MvRkV4VWlFZVN2a2R4aUFCVXZybitJOENBd0VBQWFNaE1COHdIUVlEVlIwT0JCWUVGRTRTaWdUMEtuVXpOMUtqbjBDRXBUT2xGSm5tTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFBOSszQThreXh5c0dIbDRtWkgxQ1FFNWpWSnVSQUlBZGhORzM4ZUF3OTREY0ZDTHIxWHJuNkFNNUVsVFpxa2RUWmQ4NHFRK3pqbWlBTkhHNE5UWFF4eFNBTXpzbm81QjJsZFBHaEd4TGRsNUJhSHM5Mm9TMG5XZ200NzdHNzVqY0ZYWGh1T2NYUkRoL0pxcytIUUJGaStMY3Z0Vmh0dDlYUVE4T0R6TUkxazdXQUFOTjltVkdvMHNFYm05V29Ud0FkUHlkWDF2VnZHbXBxa1dMVStuRTJxb0puQVZUdGhsblFiY1BJeXI2R092TlhkL1ZyUHF5amR2eXVDSDVCMFpUQmVjZEFlVG9MMnRsVkVUd3JCY0lVeisvZFNMaXFnU0JoajJBZkZlTG83elJhQ092Y0dqZG1vQm1FS2dhcFhrWUNUZDFiMkhrZkJhZkh0d0JsMmJmTVJYTTNhSXhMNnFiTVhmUEtEallRbnRvektQQ1E9Iiwia2V5c3RvcmVQYXNzd29yZCI6ImVkMTliNzMyZGM2MjlkZDRmZGFlN2JhMjRkZjIyYjIzIiwia2V5QWxpYXMiOiJiYzRhMzQ5ZDA2ZTFlZTE3YWMzYTdhZDE5OWRiYTBjNiIsImtleVBhc3N3b3JkIjoiMDEzMDJjZTI4MGQyOWRkNjQyMWNiNTUxMGQ3MTNlOWMifX19LCJ1cGRhdGVzIjp7fSwiZGV2ZWxvcG1lbnRDbGllbnQiOnRydWUsImJ1aWxkVHlwZSI6ImFwayIsInVzZXJuYW1lIjoicGF2YW5wYWlrIiwiZXhwZXJpbWVudGFsIjp7fSwibW9kZSI6ImJ1aWxkIiwidHJpZ2dlcmVkQnkiOiJFQVNfQ0xJIiwiYXBwSWQiOiI3MjczMjJjZi1kMWY4LTQ5YWUtODY3OC1jZjJjYzFmZTQ3OGYiLCJpbml0aWF0aW5nVXNlcklkIjoiYzNjMjkwM2ItNjNkZC00ZTMwLWFhZDMtZmIwMDAwY2FjOTFiIn0sIm1ldGFkYXRhIjp7InRyYWNraW5nQ29udGV4dCI6eyJ0cmFja2luZ19pZCI6ImFhYjE4MDFmLWFiNjktNDRkZi05MjJiLTgwMjhmNGI3YjJkYiIsInBsYXRmb3JtIjoiYW5kcm9pZCIsInNka192ZXJzaW9uIjoiNTIuMC4wIiwiYWNjb3VudF9pZCI6IjNlODc4MDk1LTYwNjAtNDc1NC04OGNiLTk0YTFkOTI5MDY3NiIsInByb2plY3RfaWQiOiI3MjczMjJjZi1kMWY4LTQ5YWUtODY3OC1jZjJjYzFmZTQ3OGYiLCJwcm9qZWN0X3R5cGUiOiJtYW5hZ2VkIiwiZGV2X2NsaWVudCI6dHJ1ZSwiZGV2X2NsaWVudF92ZXJzaW9uIjoiNS4wLjIwIiwibm9fd2FpdCI6ZmFsc2UsInJ1bl9mcm9tX2NpIjpmYWxzZSwibG9jYWwiOnRydWV9LCJhcHBCdWlsZFZlcnNpb24iOiIxIiwiYXBwVmVyc2lvbiI6IjEuMC4wIiwiY2xpVmVyc2lvbiI6IjE2LjI4LjAiLCJ3b3JrZmxvdyI6Im1hbmFnZWQiLCJjcmVkZW50aWFsc1NvdXJjZSI6InJlbW90ZSIsInNka1ZlcnNpb24iOiI1Mi4wLjAiLCJmaW5nZXJwcmludEhhc2giOiJlM2YxYWY5N2I5ZTJiMmQxZjM3YmUxNjMwNDU1MDkzY2M4MzNmZmIyIiwicmVhY3ROYXRpdmVWZXJzaW9uIjoiMC43Ni41IiwiZGlzdHJpYnV0aW9uIjoiaW50ZXJuYWwiLCJhcHBOYW1lIjoiU2NhdHR5IiwiYXBwSWRlbnRpZmllciI6ImNvbS5zY2F0dHkuYXBwIiwiYnVpbGRQcm9maWxlIjoiZGV2ZWxvcG1lbnQiLCJnaXRDb21taXRIYXNoIjoiNDgxNWE1MmIxMDZlYWYxNTlhNjE2NjE0ZjY4YjVjNDNmNmJmYWM5NCIsImdpdENvbW1pdE1lc3NhZ2UiOiJFbmhhbmNlIFNjYXR0eSBhdmF0YXIgd2l0aCBhcnRpc3RpYyBwYXN0ZWwgYWVzdGhldGljLCAzRCBhbmltYXRpb25zLCBhbmQgbWFnaWMgd2FuZFxuXG4tIFJlZmluZSBjb2xvciBwYWxldHRlIHRvIHNvZnQgcGFzdGVscyAocGVhY2gsIGJ1YmJsZWd1bSwgbGF2ZW5kZXIpXG4tIEltcGxlbWVudCBkZXRhaWxlZCBidXR0ZXJmbHkgd2luZ3Mgd2l0aCAzRCBmbHV0dGVyIGFuaW1hdGlvbiAoc2NhbGUgKyByb3RhdGUpXG4tIEFkZCBhbmltYXRlZCBmbG9yYWwgc2tpcnQgd2l0aCBmcmlsbHkgbGF5ZXJlZCBwZXRhbHNcbi0gQWRkIGFybXMsIGhhbmRzLCBhbmQgYW5pbWF0ZWQgbWFnaWMgd2FuZCBnZXN0dXJlc1xuLSBJbXBsZW1lbnQgM0QgZ2xvc3MgZWZmZWN0cyBmb3IgaGFpciBhbmQgZGVlcCBzaGFkaW5nIGZvciBleWVzXG4tIEludGVncmF0ZSBlbW90aW9uLWF3YXJlIGFuaW1hdGlvbnMgZHJpdmVuIGJ5IExMTSBKU09OIHJlc3BvbnNlXG4tIEZpeCB3aW5nIGF0dGFjaG1lbnQgYW5kIGRpc2Nvbm5lY3RlZCBsb29rXG4tIEZpeCBtaXNzaW5nIHRleHQgcmVzcG9uc2VzIGluIGNoYXQgaW50ZXJmYWNlIiwiaXNHaXRXb3JraW5nVHJlZURpcnR5Ijp0cnVlLCJ1c2VybmFtZSI6InBhdmFucGFpayIsInJ1bldpdGhOb1dhaXRGbGFnIjpmYWxzZSwicnVuRnJvbUNJIjpmYWxzZSwiZGV2ZWxvcG1lbnRDbGllbnQiOnRydWUsInJlcXVpcmVkUGFja2FnZU1hbmFnZXIiOiJucG0iLCJzaW11bGF0b3IiOmZhbHNlfX0= exited with non-zero code: 1
+    Error: build command failed.
