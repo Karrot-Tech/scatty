@@ -15,4 +15,8 @@ value = "production"
 
 [[deploy.environmentVariables]]
 name = "PORT"
-value = "${{PORT}}"
+value = "3000"
+
+[[deploy.environmentVariables]]
+name = "ALLOWED_ORIGINS"
+value = "https://scatty.xyz,https://app.scatty.xyz"

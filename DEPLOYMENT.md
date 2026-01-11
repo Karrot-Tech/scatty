@@ -149,6 +149,73 @@ After initial testing, restrict CORS to your actual origins:
 
    Note: Mobile apps don't send Origin headers, so `*` is safe for mobile-only backends.
 
+### Step 5: Configure Custom Domain (api.scatty.xyz)
+
+To use `api.scatty.xyz` instead of the default Railway URL:
+
+#### In Railway Dashboard:
+
+1. Go to your Scatty service → **Settings** → **Domains**
+
+2. Click **"Add Custom Domain"**
+
+3. Enter: `api.scatty.xyz`
+
+4. Railway will show you the required DNS records
+
+#### In Your DNS Provider (e.g., Cloudflare, Namecheap):
+
+1. Add a **CNAME record**:
+   ```
+   Type: CNAME
+   Name: api
+   Target: <your-railway-url>.up.railway.app
+   TTL: Auto (or 300)
+   ```
+
+2. If using Cloudflare, set **Proxy status** to "DNS only" (gray cloud) initially for easier debugging
+
+3. Wait for DNS propagation (usually 5-30 minutes)
+
+#### Verify Custom Domain:
+
+```bash
+# Test the custom domain
+curl https://api.scatty.xyz/v1/health
+
+# Expected response:
+# {"status":"ok","version":"1.0.0","timestamp":...}
+```
+
+#### Update Mobile App Configuration:
+
+After custom domain is working, update `apps/mobile/eas.json`:
+
+```json
+{
+  "build": {
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_SERVER_URL": "https://api.scatty.xyz"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_SERVER_URL": "https://api.scatty.xyz"
+      }
+    }
+  }
+}
+```
+
+#### Update CORS Origins:
+
+Update Railway environment variables to include your domains:
+
+```
+ALLOWED_ORIGINS=https://scatty.xyz,https://app.scatty.xyz
+```
+
 ---
 
 ## EAS Build (Android App)

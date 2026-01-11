@@ -29,7 +29,37 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '50mb' }));
 
+// Add API version header to all responses
+const API_VERSION = '1.0.0';
+app.use((req, res, next) => {
+  res.setHeader('X-API-Version', API_VERSION);
+  next();
+});
+
+// Root endpoint - API info
+app.get('/', (req, res) => {
+  res.json({
+    name: 'Scatty API',
+    version: API_VERSION,
+    docs: 'https://docs.scatty.xyz',
+    endpoints: {
+      health: '/v1/health',
+      websocket: 'wss://api.scatty.xyz',
+    },
+  });
+});
+
+// API v1 routes
+const v1Router = express.Router();
+
 // Health check endpoint
+v1Router.get('/health', (req, res) => {
+  res.json({ status: 'ok', version: API_VERSION, timestamp: Date.now() });
+});
+
+app.use('/v1', v1Router);
+
+// Legacy health check (for backwards compatibility with Railway healthcheck)
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: Date.now() });
 });

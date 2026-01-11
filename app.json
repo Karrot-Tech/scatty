@@ -1,5 +1,10 @@
 {
   "android": {
     "package": "com.pavanpaik.scatty"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "e00894d7-ae55-420e-980e-453362d2269e"
+    }
   }
 }
