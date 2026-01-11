@@ -85,6 +85,19 @@ Then press:
 
 5. Tap **Save & Reconnect**
 
+## Building for Production
+
+### EAS Build (Android APK)
+
+EAS builds must be run from the mobile app directory (not the monorepo root):
+
+```bash
+cd apps/mobile
+eas build --platform android --profile preview
+```
+
+See [Deployment Guide](DEPLOYMENT.md) for full instructions.
+
 ## Documentation
 
 - [Architecture](ARCHITECTURE.md) - System design and component overview

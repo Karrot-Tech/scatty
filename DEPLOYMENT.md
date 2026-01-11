@@ -220,9 +220,11 @@ ALLOWED_ORIGINS=https://scatty.xyz,https://app.scatty.xyz
 
 ## EAS Build (Android App)
 
+> **Important:** This is a monorepo. All EAS commands must be run from the `apps/mobile` directory, not the repository root. Running from the root will cause "Unable to resolve module ../../App" errors.
+
 ### Step 1: Configure EAS Project
 
-1. **Update `app.json`** - Replace the placeholder EAS project ID:
+1. **Navigate to the mobile app directory:**
    ```bash
    cd apps/mobile
    ```
@@ -521,13 +523,18 @@ Before going to production:
 
 ### EAS Build Fails
 
+**Error: "Unable to resolve module ../../App"**
+- You ran EAS from the monorepo root instead of `apps/mobile`
+- Fix: `cd apps/mobile && eas build --platform android --profile preview`
+- Do NOT run EAS commands from the repository root
+
 **Error: "Missing icon.png"**
 - Create required assets (see Pre-Deployment Checklist)
 - Ensure files are in `apps/mobile/assets/`
 
 **Error: "Project not configured"**
-- Run `eas build:configure` first
-- Update `projectId` in `app.json`
+- Run `cd apps/mobile && eas build:configure` first
+- Update `projectId` in `apps/mobile/app.json`
 
 **Error: "Build queue timeout"**
 - EAS free tier has limited concurrent builds
