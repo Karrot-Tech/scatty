@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { colors } from '../theme';
 
 interface Props {
   connected: boolean;
@@ -16,7 +17,7 @@ export function StatusHeader({ connected }: Props) {
         style={styles.settingsButton}
         onPress={() => router.push('/settings')}
       >
-        <Ionicons name="settings-outline" size={22} color="#94A3B8" />
+        <Ionicons name="settings-outline" size={22} color={colors.text.secondary} />
       </TouchableOpacity>
 
       <Text style={styles.title}>SCATTY</Text>
@@ -25,7 +26,7 @@ export function StatusHeader({ connected }: Props) {
         <View
           style={[
             styles.statusDot,
-            { backgroundColor: connected ? '#10B981' : '#EF4444' },
+            { backgroundColor: connected ? colors.accent.success : colors.accent.error },
           ]}
         />
         <Text style={styles.statusText}>
@@ -48,12 +49,17 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 2,
   },
   title: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 18,
     fontWeight: '700',
     letterSpacing: 2,
@@ -61,10 +67,15 @@ const styles = StyleSheet.create({
   statusContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 12,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 2,
   },
   statusDot: {
     width: 8,
@@ -73,7 +84,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   statusText: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     fontSize: 12,
   },
 });

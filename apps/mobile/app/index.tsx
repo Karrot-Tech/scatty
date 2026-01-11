@@ -12,14 +12,7 @@ import { ActionBar } from '../src/components/ActionBar';
 import { CameraModal } from '../src/components/CameraModal';
 import { useScatty } from '../src/hooks/useScatty';
 import { Message } from '@scatty/shared';
-
-const COLORS = {
-  idle: '#64748B',
-  listening: '#3B82F6',
-  thinking: '#F59E0B',
-  speaking: '#10B981',
-  looking: '#8B5CF6',
-};
+import { colors, getStateColor } from '../src/theme';
 
 const STATE_LABELS: Record<string, string> = {
   idle: 'Ready to chat',
@@ -79,6 +72,8 @@ export default function HomeScreen() {
     setCameraPrompt(undefined);
   };
 
+  const stateColor = getStateColor(state);
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <StatusHeader connected={connected} />
@@ -86,8 +81,8 @@ export default function HomeScreen() {
       {/* Avatar section */}
       <View style={styles.avatarSection}>
         <ScattyAvatar state={state} />
-        <View style={[styles.statusBubble, { backgroundColor: COLORS[state] + '20' }]}>
-          <Text style={[styles.statusText, { color: COLORS[state] }]}>
+        <View style={[styles.statusBubble, { backgroundColor: stateColor + '25' }]}>
+          <Text style={[styles.statusText, { color: stateColor }]}>
             {STATE_LABELS[state]}
           </Text>
         </View>
@@ -148,7 +143,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F0F1A',
+    backgroundColor: colors.background.primary,
   },
   avatarSection: {
     alignItems: 'center',
@@ -174,7 +169,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   emptyStateText: {
-    color: '#64748B',
+    color: colors.text.muted,
     fontSize: 16,
     textAlign: 'center',
   },
@@ -190,26 +185,31 @@ const styles = StyleSheet.create({
   },
   userBubble: {
     alignSelf: 'flex-end',
-    backgroundColor: '#6C5CE7',
+    backgroundColor: colors.accent.primary,
   },
   assistantBubble: {
     alignSelf: 'flex-start',
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    elevation: 2,
   },
   streamingBubble: {
-    borderColor: '#10B981',
+    borderColor: colors.accent.success,
     borderWidth: 1,
   },
   messageText: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 15,
     lineHeight: 22,
   },
   userMessageText: {
-    color: '#FFFFFF',
+    color: colors.text.inverse,
   },
   imageIndicator: {
-    backgroundColor: '#8B5CF620',
+    backgroundColor: colors.state.looking + '30',
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 8,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   imageIndicatorText: {
-    color: '#8B5CF6',
+    color: colors.state.looking,
     fontSize: 11,
     fontWeight: '500',
   },
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#10B981',
+    backgroundColor: colors.accent.success,
     opacity: 0.5,
   },
   dot1: {

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ScattyState } from '@scatty/shared';
+import { colors, getStateColor } from '../theme';
 
 interface Props {
   state: ScattyState;
@@ -20,14 +21,6 @@ interface Props {
   onCameraPress: () => void;
   onSendText: (text: string) => void;
 }
-
-const COLORS = {
-  idle: '#64748B',
-  listening: '#3B82F6',
-  thinking: '#F59E0B',
-  speaking: '#10B981',
-  looking: '#8B5CF6',
-};
 
 export function ActionBar({
   state,
@@ -59,6 +52,8 @@ export function ActionBar({
     }
   };
 
+  const stateColor = getStateColor(state);
+
   return (
     <View style={styles.container}>
       {/* Live transcript display */}
@@ -82,7 +77,7 @@ export function ActionBar({
           <Ionicons
             name="camera-outline"
             size={24}
-            color={isProcessing ? '#475569' : '#94A3B8'}
+            color={isProcessing ? colors.text.muted : colors.text.secondary}
           />
           <Text style={[styles.buttonLabel, isProcessing && styles.buttonLabelDisabled]}>
             Look
@@ -94,7 +89,7 @@ export function ActionBar({
           style={[
             styles.button,
             styles.primaryButton,
-            { backgroundColor: isListening ? COLORS.listening : '#6C5CE7' },
+            { backgroundColor: isListening ? stateColor : colors.accent.primary },
           ]}
           onPress={handleMicPress}
           disabled={isProcessing}
@@ -102,7 +97,7 @@ export function ActionBar({
           <Ionicons
             name={isListening ? 'stop' : 'mic'}
             size={32}
-            color="#FFFFFF"
+            color={colors.text.inverse}
           />
           <Text style={styles.primaryButtonLabel}>
             {isListening ? 'Stop' : 'Talk'}
@@ -118,7 +113,7 @@ export function ActionBar({
           <Ionicons
             name="chatbubble-outline"
             size={24}
-            color={isProcessing ? '#475569' : '#94A3B8'}
+            color={isProcessing ? colors.text.muted : colors.text.secondary}
           />
           <Text style={[styles.buttonLabel, isProcessing && styles.buttonLabelDisabled]}>
             Type
@@ -146,7 +141,7 @@ export function ActionBar({
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Message Scatty</Text>
               <TouchableOpacity onPress={() => setTextModalVisible(false)}>
-                <Ionicons name="close" size={24} color="#94A3B8" />
+                <Ionicons name="close" size={24} color={colors.text.secondary} />
               </TouchableOpacity>
             </View>
             <View style={styles.inputContainer}>
@@ -155,7 +150,7 @@ export function ActionBar({
                 value={textInput}
                 onChangeText={setTextInput}
                 placeholder="Type your message..."
-                placeholderTextColor="#64748B"
+                placeholderTextColor={colors.text.muted}
                 multiline
                 autoFocus
                 returnKeyType="send"
@@ -172,7 +167,7 @@ export function ActionBar({
                 <Ionicons
                   name="send"
                   size={20}
-                  color={textInput.trim() ? '#FFFFFF' : '#475569'}
+                  color={textInput.trim() ? colors.text.inverse : colors.text.muted}
                 />
               </TouchableOpacity>
             </View>
@@ -189,13 +184,18 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   transcriptContainer: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     borderRadius: 12,
     padding: 12,
     marginBottom: 16,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 2,
   },
   transcriptText: {
-    color: '#E2E8F0',
+    color: colors.text.primary,
     fontSize: 14,
     textAlign: 'center',
     fontStyle: 'italic',
@@ -214,28 +214,33 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 2,
   },
   primaryButton: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    shadowColor: '#6C5CE7',
+    shadowColor: colors.accent.primary,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
   },
   buttonLabel: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     fontSize: 10,
     marginTop: 4,
   },
   buttonLabelDisabled: {
-    color: '#475569',
+    color: colors.text.muted,
   },
   primaryButtonLabel: {
-    color: '#FFFFFF',
+    color: colors.text.inverse,
     fontSize: 12,
     fontWeight: '600',
     marginTop: 2,
@@ -246,13 +251,18 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   modalContent: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 8,
   },
   modalHeader: {
     flexDirection: 'row',
@@ -261,7 +271,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   modalTitle: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -272,10 +282,10 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    backgroundColor: '#0F0F1A',
+    backgroundColor: colors.background.secondary,
     borderRadius: 12,
     padding: 12,
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 16,
     maxHeight: 100,
   },
@@ -283,11 +293,11 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: '#6C5CE7',
+    backgroundColor: colors.accent.primary,
     alignItems: 'center',
     justifyContent: 'center',
   },
   sendButtonDisabled: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.secondary,
   },
 });

@@ -5,9 +5,9 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "scatty",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "splash": {
-      "backgroundColor": "#0F0F1A"
+      "backgroundColor": "#FFF9FB"
     },
     "assetBundlePatterns": ["**/*"],
     "web": {

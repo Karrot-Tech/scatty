@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
+import { colors } from '../theme';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -53,7 +54,7 @@ export function CameraModal({ visible, onClose, onCapture, prompt }: Props) {
   if (!permission) {
     return (
       <View style={styles.overlay}>
-        <ActivityIndicator size="large" color="#6C5CE7" />
+        <ActivityIndicator size="large" color={colors.accent.primary} />
         <Text style={styles.loadingText}>Loading camera...</Text>
       </View>
     );
@@ -65,7 +66,9 @@ export function CameraModal({ visible, onClose, onCapture, prompt }: Props) {
     return (
       <View style={styles.overlay}>
         <View style={styles.permissionContent}>
-          <Ionicons name="camera-outline" size={64} color="#6C5CE7" />
+          <View style={styles.permissionIconContainer}>
+            <Ionicons name="camera-outline" size={48} color={colors.accent.primary} />
+          </View>
           <Text style={styles.permissionTitle}>Camera Access Needed</Text>
           <Text style={styles.permissionText}>
             Scatty needs camera access to see what you show it.
@@ -146,20 +149,37 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
-    backgroundColor: '#0F0F1A',
+    backgroundColor: colors.background.primary,
     zIndex: 9999,
     elevation: 9999,
     justifyContent: 'center',
     alignItems: 'center',
   },
   loadingText: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     marginTop: 16,
     fontSize: 16,
   },
   permissionContent: {
     alignItems: 'center',
     padding: 32,
+    backgroundColor: colors.background.card,
+    borderRadius: 24,
+    marginHorizontal: 24,
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  permissionIconContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: colors.background.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
   },
   container: {
     flex: 1,
@@ -199,7 +219,7 @@ const styles = StyleSheet.create({
     top: 120,
     left: 20,
     right: 20,
-    backgroundColor: 'rgba(108, 92, 231, 0.9)',
+    backgroundColor: colors.accent.primary + 'E6',
     borderRadius: 12,
     padding: 12,
   },
@@ -259,27 +279,28 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   permissionTitle: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 20,
     fontWeight: '600',
-    marginTop: 16,
     marginBottom: 8,
   },
   permissionText: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     fontSize: 15,
     textAlign: 'center',
     marginBottom: 24,
   },
   permissionButton: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: colors.accent.primary,
     paddingHorizontal: 24,
     paddingVertical: 14,
     borderRadius: 12,
     marginBottom: 12,
+    width: '100%',
+    alignItems: 'center',
   },
   permissionButtonText: {
-    color: '#FFFFFF',
+    color: colors.text.inverse,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -288,7 +309,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
   },
   cancelButtonText: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     fontSize: 16,
   },
 });

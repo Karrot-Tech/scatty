@@ -74,7 +74,10 @@ export function useScatty() {
         }
       },
       onEnd: () => {
-        // Voice stopped, handled by results callback
+        // Reset to idle when voice recognition ends
+        console.log('[Scatty] Voice recognition ended, resetting to idle');
+        store.setState('idle');
+        store.setLiveTranscript('');
       },
       onError: (error) => {
         console.error('Voice error:', error);
@@ -85,10 +88,12 @@ export function useScatty() {
     // Connect to server
     console.log('[Scatty] Connecting to:', store.serverUrl);
     connectToServer();
+    // Note: Can't auto-start mic - browsers require user interaction first
 
     return () => {
       voiceService.destroy();
-      scattyClient.disconnect();
+      // Don't disconnect socket on unmount - connection persists across navigation
+      // scattyClient.disconnect();
     };
   }, []);
 

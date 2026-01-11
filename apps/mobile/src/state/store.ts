@@ -10,6 +10,9 @@ interface ScattyStore {
   // State
   state: ScattyState;
 
+  // Settings
+  selectedVoice: string | null;
+
   // Conversation
   messages: Message[];
   currentResponse: string;
@@ -19,6 +22,7 @@ interface ScattyStore {
   setServerUrl: (url: string) => void;
   setConnected: (connected: boolean) => void;
   setState: (state: ScattyState) => void;
+  setSelectedVoice: (voice: string | null) => void;
   setLiveTranscript: (transcript: string) => void;
   setCurrentResponse: (response: string) => void;
   appendCurrentResponse: (chunk: string) => void;
@@ -35,6 +39,7 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   connected: false,
   sessionId: generateSessionId(),
   state: 'idle',
+  selectedVoice: null,
   messages: [],
   currentResponse: '',
   liveTranscript: '',
@@ -45,6 +50,8 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   setConnected: (connected) => set({ connected }),
 
   setState: (state) => set({ state }),
+
+  setSelectedVoice: (voice) => set({ selectedVoice: voice }),
 
   setLiveTranscript: (transcript) => set({ liveTranscript: transcript }),
 

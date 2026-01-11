@@ -12,6 +12,7 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useScattyStore } from '../src/state/store';
 import { useScatty } from '../src/hooks/useScatty';
+import { colors } from '../src/theme';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -65,7 +66,7 @@ export default function SettingsScreen() {
           style={styles.closeButton}
           onPress={() => router.back()}
         >
-          <Ionicons name="close" size={24} color="#94A3B8" />
+          <Ionicons name="close" size={24} color={colors.text.secondary} />
         </TouchableOpacity>
         <Text style={styles.title}>Settings</Text>
         <View style={styles.placeholder} />
@@ -85,7 +86,7 @@ export default function SettingsScreen() {
               value={urlInput}
               onChangeText={setUrlInput}
               placeholder="http://localhost:3001"
-              placeholderTextColor="#64748B"
+              placeholderTextColor={colors.text.muted}
               autoCapitalize="none"
               autoCorrect={false}
               keyboardType="url"
@@ -100,7 +101,7 @@ export default function SettingsScreen() {
             <Ionicons
               name={isSaving ? 'hourglass' : 'wifi'}
               size={18}
-              color="#FFFFFF"
+              color={colors.text.inverse}
             />
             <Text style={styles.buttonText}>
               {isSaving ? 'Connecting...' : 'Save & Reconnect'}
@@ -125,7 +126,7 @@ export default function SettingsScreen() {
             style={[styles.button, styles.dangerButton]}
             onPress={handleResetSession}
           >
-            <Ionicons name="refresh" size={18} color="#EF4444" />
+            <Ionicons name="refresh" size={18} color={colors.accent.error} />
             <Text style={[styles.buttonText, styles.dangerText]}>
               Reset Session
             </Text>
@@ -141,7 +142,7 @@ export default function SettingsScreen() {
           </View>
           <View style={styles.infoBox}>
             <Text style={styles.infoLabel}>Powered by</Text>
-            <Text style={styles.infoValue}>Gemini AI</Text>
+            <Text style={styles.infoValue}>🥕📡</Text>
           </View>
         </View>
       </View>
@@ -152,7 +153,7 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F0F1A',
+    backgroundColor: colors.background.primary,
   },
   header: {
     flexDirection: 'row',
@@ -161,18 +162,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#1A1A2E',
+    borderBottomColor: colors.ui.border,
   },
   closeButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: colors.ui.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 2,
   },
   title: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -187,23 +193,25 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   sectionTitle: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 4,
   },
   sectionDescription: {
-    color: '#64748B',
+    color: colors.text.muted,
     fontSize: 13,
     marginBottom: 12,
   },
   inputContainer: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     borderRadius: 12,
     marginBottom: 12,
+    borderWidth: 1,
+    borderColor: colors.ui.border,
   },
   input: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 15,
     padding: 14,
   },
@@ -216,41 +224,43 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   primaryButton: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: colors.accent.primary,
   },
   dangerButton: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     borderWidth: 1,
-    borderColor: '#EF4444',
+    borderColor: colors.accent.error,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: colors.text.inverse,
     fontSize: 15,
     fontWeight: '600',
   },
   dangerText: {
-    color: '#EF4444',
+    color: colors.accent.error,
   },
   infoBox: {
-    backgroundColor: '#1A1A2E',
+    backgroundColor: colors.background.card,
     borderRadius: 12,
     padding: 14,
     marginBottom: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.ui.border,
   },
   infoText: {
-    color: '#94A3B8',
+    color: colors.text.secondary,
     fontSize: 13,
     fontFamily: 'monospace',
   },
   infoLabel: {
-    color: '#64748B',
+    color: colors.text.muted,
     fontSize: 14,
   },
   infoValue: {
-    color: '#F8FAFC',
+    color: colors.text.primary,
     fontSize: 14,
     fontWeight: '500',
   },
