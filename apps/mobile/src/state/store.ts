@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ScattyState, Message, generateSessionId, generateMessageId } from '@scatty/shared';
+import { ScattyState, Message, EmotionData, DEFAULT_EMOTION, generateSessionId, generateMessageId } from '@scatty/shared';
 
 interface ScattyStore {
   // Connection
@@ -9,6 +9,7 @@ interface ScattyStore {
 
   // State
   state: ScattyState;
+  currentEmotion: EmotionData;
 
   // Settings
   selectedVoice: string | null;
@@ -22,6 +23,7 @@ interface ScattyStore {
   setServerUrl: (url: string) => void;
   setConnected: (connected: boolean) => void;
   setState: (state: ScattyState) => void;
+  setEmotion: (emotion: EmotionData) => void;
   setSelectedVoice: (voice: string | null) => void;
   setLiveTranscript: (transcript: string) => void;
   setCurrentResponse: (response: string) => void;
@@ -39,6 +41,7 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   connected: false,
   sessionId: generateSessionId(),
   state: 'idle',
+  currentEmotion: DEFAULT_EMOTION,
   selectedVoice: null,
   messages: [],
   currentResponse: '',
@@ -50,6 +53,8 @@ export const useScattyStore = create<ScattyStore>((set, get) => ({
   setConnected: (connected) => set({ connected }),
 
   setState: (state) => set({ state }),
+
+  setEmotion: (emotion) => set({ currentEmotion: emotion }),
 
   setSelectedVoice: (voice) => set({ selectedVoice: voice }),
 

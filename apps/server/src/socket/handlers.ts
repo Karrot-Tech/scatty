@@ -4,6 +4,7 @@ import {
   VisionPayload,
   SessionPayload,
   ScattyState,
+  DEFAULT_EMOTION,
 } from '@scatty/shared';
 import { sessionManager } from '../services/SessionManager';
 import { aiService } from '../services/AIService';
@@ -47,18 +48,21 @@ export function setupSocketHandlers(io: Server): void {
         const history = sessionManager.getHistory(sessionId);
         sessionManager.addMessage(sessionId, 'user', text);
 
-        let fullResponse = '';
-
-        // Stream response
+        // Generate response with emotion data (non-streaming for JSON parsing)
         emitState(socket, 'speaking', sessionId);
-        for await (const chunk of aiService.streamResponse(history, text)) {
-          fullResponse += chunk;
-          socket.emit('response:chunk', { text: chunk, sessionId });
-        }
+        const response = await aiService.generateResponse(history, text);
 
-        // Save assistant response
-        sessionManager.addMessage(sessionId, 'assistant', fullResponse);
-        socket.emit('response:complete', { fullText: fullResponse, sessionId });
+        console.log(`[Handlers] Response emotion: ${response.emotion.emotion} (${response.emotion.intensity})`);
+
+        // Save assistant response (text only for history)
+        sessionManager.addMessage(sessionId, 'assistant', response.text);
+
+        // Emit complete response with emotion
+        socket.emit('response:complete', {
+          fullText: response.text,
+          sessionId,
+          emotion: response.emotion,
+        });
         emitState(socket, 'idle', sessionId);
 
       } catch (error: any) {
@@ -83,20 +87,21 @@ export function setupSocketHandlers(io: Server): void {
         const history = sessionManager.getHistory(sessionId);
         sessionManager.addMessage(sessionId, 'user', text, true);
 
-        let fullResponse = '';
-
         // Process with vision
         emitState(socket, 'thinking', sessionId);
         await new Promise(resolve => setTimeout(resolve, 500)); // Brief pause for UX
 
         emitState(socket, 'speaking', sessionId);
-        for await (const chunk of aiService.streamResponse(history, text, frame)) {
-          fullResponse += chunk;
-          socket.emit('response:chunk', { text: chunk, sessionId });
-        }
+        const response = await aiService.generateResponse(history, text, frame);
 
-        sessionManager.addMessage(sessionId, 'assistant', fullResponse);
-        socket.emit('response:complete', { fullText: fullResponse, sessionId });
+        console.log(`[Handlers] Vision response emotion: ${response.emotion.emotion}`);
+
+        sessionManager.addMessage(sessionId, 'assistant', response.text);
+        socket.emit('response:complete', {
+          fullText: response.text,
+          sessionId,
+          emotion: response.emotion,
+        });
         emitState(socket, 'idle', sessionId);
 
       } catch (error) {

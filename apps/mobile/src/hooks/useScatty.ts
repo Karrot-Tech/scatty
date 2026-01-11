@@ -19,9 +19,22 @@ export function useScatty() {
     });
 
     const unsubComplete = scattyClient.on('response:complete', (payload: any) => {
-      console.log('[Scatty] Response complete');
+      console.log('[Scatty] Response complete, emotion:', payload.emotion?.emotion);
+
+      // Set the full text since we are not using streaming chunks anymore
+      if (payload.fullText) {
+        store.setCurrentResponse(payload.fullText);
+      }
+
       store.finalizeResponse();
       store.setState('idle');
+
+      // Apply emotion from response
+      if (payload.emotion) {
+        console.log('[Scatty] 🎭 Emotion:', payload.emotion.emotion, 'intensity:', payload.emotion.intensity);
+        store.setEmotion(payload.emotion);
+      }
+
       ttsService.speak(payload.fullText);
     });
 
@@ -160,6 +173,7 @@ export function useScatty() {
     connected: store.connected,
     messages: store.messages,
     currentResponse: store.currentResponse,
+    currentEmotion: store.currentEmotion,
     liveTranscript: store.liveTranscript,
 
     // Actions

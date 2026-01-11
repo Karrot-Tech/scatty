@@ -13,6 +13,47 @@ export interface ScattyStatus {
 }
 
 // =============================================================================
+// EMOTIONS & EXPRESSIONS
+// =============================================================================
+
+export type EmotionType =
+  | 'neutral'
+  | 'happy'
+  | 'excited'
+  | 'curious'
+  | 'thinking'
+  | 'surprised'
+  | 'concerned'
+  | 'playful'
+  | 'proud'
+  | 'shy';
+
+export interface EmotionData {
+  emotion: EmotionType;
+  intensity: number;      // 0.0 to 1.0
+  eyeSize?: number;       // 0.8 to 1.3 (squint to wide)
+  mouthOpen?: number;     // 0.0 to 1.0
+  wingSpeed?: number;     // 0.5 to 2.0 (slow to fast flutter)
+  sparkleIntensity?: number; // 0.0 to 2.0
+  blushIntensity?: number;  // 0.0 to 1.0
+}
+
+export interface ScattyResponse {
+  text: string;
+  emotion: EmotionData;
+}
+
+export const DEFAULT_EMOTION: EmotionData = {
+  emotion: 'neutral',
+  intensity: 0.5,
+  eyeSize: 1.0,
+  mouthOpen: 0.0,
+  wingSpeed: 1.0,
+  sparkleIntensity: 1.0,
+  blushIntensity: 0.3,
+};
+
+// =============================================================================
 // CLIENT -> SERVER EVENTS
 // =============================================================================
 
@@ -47,11 +88,13 @@ export interface ClientEvents {
 export interface ResponseChunkPayload {
   text: string;
   sessionId: string;
+  emotion?: EmotionData;
 }
 
 export interface ResponseCompletePayload {
   fullText: string;
   sessionId: string;
+  emotion: EmotionData;
 }
 
 export interface StateUpdatePayload {

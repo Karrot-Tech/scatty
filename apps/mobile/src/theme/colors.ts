@@ -28,21 +28,28 @@ export const colors = {
     looking: '#E8A4C4',    // Soft pink
   },
 
-  // Fairy avatar colors
+  // Fairy avatar colors - Artistic Pastel
   fairy: {
-    skin: '#FFE4D6',       // Peachy skin
-    hair: '#FFB6C1',       // Light pink hair
-    hairHighlight: '#FFC8D7',
-    dress: '#E8D4F0',      // Soft lavender dress
-    dressAccent: '#D4B8E8',
-    wings: '#E8F4FF',      // Translucent blue-white
-    wingsAccent: '#C8E4FF',
-    blush: '#FFB5B5',      // Rosy cheeks
-    eyes: '#6B5B7A',       // Soft purple-brown
+    skin: '#FFE9E0',       // Creamy peach skin
+    skinShadow: '#FACCBA', // Soft coral shadow
+    hair: '#FF9EB5',       // Bubblegum pink hair
+    hairHighlight: '#FFD1DC', // Milky pink highlight
+    hairShadow: '#E88CA3', // Darker pink depth
+    dress: '#DCD0FF',      // Pale violet dress
+    dressAccent: '#C9B1FF', // Richer violet accent
+    wings: '#E0DEFF',      // Periwinkle/Lavender wings
+    wingsAccent: '#C4C0FF', // Deeper lavender
+    blush: '#FFB7B2',      // Soft salmon blush
+    eyes: '#4B3F72',       // Deep indigo/purple eyes
     eyeHighlight: '#FFFFFF',
-    mouth: '#E89AAE',      // Soft pink
-    sparkle: '#FFE566',    // Golden sparkle
-    sparkleAlt: '#FF99CC', // Pink sparkle
+    eyeShine: '#DCD0FF',   // Lavender shine
+    eyelash: '#3E345E',    // Dark violet lashes
+    eyebrow: '#BFA6C4',    // Soft purple-taupe
+    mouth: '#FF8DA1',      // Rose pink
+    mouthHighlight: '#FFC4D0', // Soft pink highlight
+    nose: '#E8C0B0',       // Subtle taupe-pink
+    sparkle: '#FFFACD',    // Lemon chiffon
+    sparkleAlt: '#FFD1DC', // Pastel pink
   },
 
   // Accents
