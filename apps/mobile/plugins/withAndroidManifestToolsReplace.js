@@ -1,4 +1,4 @@
-const { withAndroidManifest } = require('expo/config-plugins');
+const { withAndroidManifest } = require('@expo/config-plugins');
 
 module.exports = function withAndroidManifestToolsReplace(config) {
     return withAndroidManifest(config, async (config) => {
@@ -23,7 +23,7 @@ module.exports = function withAndroidManifestToolsReplace(config) {
         // Explicitly set the value to the AndroidX one to resolve the conflict
         application.$['android:appComponentFactory'] = 'androidx.core.app.CoreComponentFactory';
 
-        // Also likely need to perform a replace for 'android:allowBackup' if that conflicts often, 
+        // Also likely need to perform a replace for 'android:allowBackup' if that conflicts often,
         // but the error specifically mentioned appComponentFactory.
 
         return config;
