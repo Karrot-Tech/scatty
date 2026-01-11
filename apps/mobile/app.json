@@ -57,7 +57,8 @@
           "speechRecognitionPermission": "Allow Scatty to use speech recognition."
         }
       ],
-      "./plugins/withAndroidManifestToolsReplace"
+      "./plugins/withAndroidManifestToolsReplace",
+      "./plugins/withAndroidSupportExclusions"
     ],
     "experiments": {
       "typedRoutes": true
