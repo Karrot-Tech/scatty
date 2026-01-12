@@ -85,18 +85,82 @@ Then press:
 
 5. Tap **Save & Reconnect**
 
-## Building for Production
+## Deployment
 
-### EAS Build (Android APK)
+### Server (Railway)
 
-EAS builds must be run from the mobile app directory (not the monorepo root):
+1. Push code to GitHub
+2. Connect repo to [Railway](https://railway.app)
+3. Set environment variables:
+   ```
+   GEMINI_API_KEY=your_api_key
+   ALLOWED_ORIGINS=*
+   ```
+4. Railway auto-deploys using `railway.toml` config
+
+**Manual deploy:**
+```bash
+railway login
+railway up
+```
+
+**Health check:** `https://your-app.railway.app/health`
+
+---
+
+### Mobile Android (EAS Build)
+
+> All EAS commands must be run from `apps/mobile` directory.
 
 ```bash
 cd apps/mobile
+eas login
 eas build --platform android --profile preview
 ```
 
-See [Deployment Guide](DEPLOYMENT.md) for full instructions.
+**Build profiles:**
+- `development` - Dev client with local server
+- `preview` - APK for testing with production server
+- `production` - Release APK
+
+**Local build (requires Android SDK):**
+```bash
+cd apps/mobile
+eas build --platform android --profile preview --local
+```
+
+---
+
+### Mobile Web (Vercel)
+
+> Deploy from `apps/mobile` directory.
+
+```bash
+cd apps/mobile
+vercel login
+vercel --prod
+```
+
+**First-time setup:**
+- Build command: `cd ../.. && npm run build:shared && cd apps/mobile && npx expo export --platform web`
+- Output directory: `dist`
+- Install command: `cd ../.. && npm install`
+
+**Environment variable:**
+```
+EXPO_PUBLIC_SERVER_URL=https://your-app.railway.app
+```
+
+**Local preview:**
+```bash
+cd apps/mobile
+npx expo export --platform web
+npx serve dist
+```
+
+---
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ## Documentation
 
