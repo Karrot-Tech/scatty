@@ -13,6 +13,7 @@ class WebTTSService {
     private utterance: SpeechSynthesisUtterance | null = null;
     private selectedVoiceName: string | null = null;
     private voicesLoaded = false;
+    private unlocked = false;
     private preferredVoices: string[] = [
         // iOS Safari voices (must be explicit)
         'Samantha',
@@ -89,6 +90,33 @@ class WebTTSService {
 
     getSelectedVoiceName(): string | null {
         return this.selectedVoiceName;
+    }
+
+    // Must be called from a user gesture (tap/click) on iOS Safari
+    unlock(): void {
+        if (this.unlocked || typeof window === 'undefined' || !window.speechSynthesis) return;
+
+        console.log('[WebTTS] Unlocking speech synthesis...');
+
+        // Create and immediately cancel a silent utterance to unlock
+        const utterance = new SpeechSynthesisUtterance('');
+        utterance.volume = 0;
+
+        // Set voice if available
+        const voice = this.selectBestVoice();
+        if (voice) {
+            utterance.voice = voice;
+        }
+
+        window.speechSynthesis.speak(utterance);
+        window.speechSynthesis.cancel();
+
+        this.unlocked = true;
+        console.log('[WebTTS] Speech synthesis unlocked');
+    }
+
+    isUnlocked(): boolean {
+        return this.unlocked;
     }
 
     getAvailableVoices(): VoiceInfo[] {

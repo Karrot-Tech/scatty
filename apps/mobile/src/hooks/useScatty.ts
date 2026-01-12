@@ -175,6 +175,10 @@ export function useScatty() {
   }, [store.sessionId]);
 
   const startListening = useCallback(async () => {
+    // Unlock TTS on first user interaction (required for iOS Safari)
+    if (Platform.OS === 'web') {
+      ttsService.unlock();
+    }
     await ttsService.stop();
     await voiceService.startListening();
   }, []);
@@ -185,6 +189,10 @@ export function useScatty() {
 
   const sendText = useCallback((text: string) => {
     if (!text.trim()) return;
+    // Unlock TTS on first user interaction (required for iOS Safari)
+    if (Platform.OS === 'web') {
+      ttsService.unlock();
+    }
     console.log('[Scatty] Sending text:', text, 'connected:', scattyClient.isConnected);
     store.addMessage('user', text);
     store.setState('thinking');
