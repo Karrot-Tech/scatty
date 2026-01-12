@@ -42,6 +42,11 @@
         "android.permission.CAMERA"
       ]
     },
+    "extra": {
+      "eas": {
+        "projectId": "YOUR_PROJECT_ID_HERE"
+      }
+    },
     "plugins": [
       "expo-router",
       [
