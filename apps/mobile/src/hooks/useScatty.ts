@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useRef } from 'react';
+import { Platform } from 'react-native';
 import { useScattyStore } from '../state/store';
 import { scattyClient } from '../services/ScattyClient';
 import { voiceService } from '../services/VoiceService';
@@ -8,6 +9,7 @@ import { detectVisionIntent, ScattyState } from '@scatty/shared';
 export function useScatty() {
   const store = useScattyStore();
   const isInitialized = useRef(false);
+  const ttsInitialized = useRef(false);
 
   // Setup socket event listeners FIRST (before connection)
   useEffect(() => {
@@ -61,6 +63,44 @@ export function useScatty() {
       unsubDisconnect();
     };
   }, []);
+
+  // Initialize TTS voice on iOS Safari
+  useEffect(() => {
+    if (Platform.OS !== 'web' || ttsInitialized.current) return;
+    ttsInitialized.current = true;
+
+    // Check if iOS Safari
+    const isIOSSafari = typeof navigator !== 'undefined' &&
+      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+      /Safari/.test(navigator.userAgent) &&
+      !/Chrome|CriOS|FxiOS/.test(navigator.userAgent);
+
+    if (isIOSSafari) {
+      console.log('[Scatty] iOS Safari detected, initializing TTS voice');
+
+      const initVoice = () => {
+        const voices = window.speechSynthesis?.getVoices() || [];
+        if (voices.length > 0 && !store.selectedVoice) {
+          const samantha = voices.find(v => v.name === 'Samantha');
+          const voiceToUse = samantha ? 'Samantha' : voices.find(v => v.lang.startsWith('en'))?.name;
+          if (voiceToUse) {
+            console.log('[Scatty] Auto-selecting voice for iOS Safari:', voiceToUse);
+            store.setSelectedVoice(voiceToUse);
+            ttsService.setVoice(voiceToUse);
+          }
+        }
+      };
+
+      // Try immediately and on voices changed
+      initVoice();
+      if (window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = initVoice;
+      }
+    } else if (store.selectedVoice) {
+      // Sync store voice to TTS service on other platforms
+      ttsService.setVoice(store.selectedVoice);
+    }
+  }, [store.selectedVoice]);
 
   // Initialize connection and voice AFTER listeners are set up
   useEffect(() => {
