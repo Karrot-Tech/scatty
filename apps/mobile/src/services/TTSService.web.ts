@@ -12,7 +12,14 @@ class WebTTSService {
     private isSpeaking = false;
     private utterance: SpeechSynthesisUtterance | null = null;
     private selectedVoiceName: string | null = null;
+    private voicesLoaded = false;
     private preferredVoices: string[] = [
+        // iOS Safari voices (must be explicit)
+        'Samantha',
+        'Karen',
+        'Daniel',
+        'Moira',
+        'Rishi',
         // Premium/natural voices (Chrome, Edge)
         'Shelley (English (United States)) (en-US)',
         'Google UK English Female',
@@ -20,14 +27,56 @@ class WebTTSService {
         'Google US English',
         'Microsoft Zira - English (United States)',
         'Microsoft David - English (United States)',
-        'Samantha', // macOS
-        'Karen',    // macOS
-        'Daniel',   // macOS UK
         // Fallback voices
         'English United States',
         'en-US',
         'en-GB',
     ];
+
+    constructor() {
+        // Pre-load voices and auto-select on iOS Safari
+        this.initVoices();
+    }
+
+    private isIOSSafari(): boolean {
+        if (typeof navigator === 'undefined') return false;
+        const ua = navigator.userAgent;
+        return /iPad|iPhone|iPod/.test(ua) && /Safari/.test(ua) && !/Chrome|CriOS|FxiOS/.test(ua);
+    }
+
+    private initVoices(): void {
+        if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+        const loadVoices = () => {
+            const voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                this.voicesLoaded = true;
+                console.log('[WebTTS] Voices loaded:', voices.length);
+
+                // Auto-select a voice on iOS Safari if none selected
+                if (this.isIOSSafari() && !this.selectedVoiceName) {
+                    const samantha = voices.find(v => v.name === 'Samantha');
+                    if (samantha) {
+                        this.selectedVoiceName = 'Samantha';
+                        console.log('[WebTTS] iOS Safari: Auto-selected Samantha voice');
+                    } else {
+                        // Pick first English voice
+                        const englishVoice = voices.find(v => v.lang.startsWith('en'));
+                        if (englishVoice) {
+                            this.selectedVoiceName = englishVoice.name;
+                            console.log('[WebTTS] iOS Safari: Auto-selected', englishVoice.name);
+                        }
+                    }
+                }
+            }
+        };
+
+        // Try loading immediately
+        loadVoices();
+
+        // Also listen for voices changed event (needed for Chrome)
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
 
     private getVoices(): SpeechSynthesisVoice[] {
         return window.speechSynthesis?.getVoices() || [];
@@ -36,6 +85,10 @@ class WebTTSService {
     setVoice(voiceName: string | null): void {
         this.selectedVoiceName = voiceName;
         console.log('[WebTTS] Voice set to:', voiceName);
+    }
+
+    getSelectedVoiceName(): string | null {
+        return this.selectedVoiceName;
     }
 
     getAvailableVoices(): VoiceInfo[] {
