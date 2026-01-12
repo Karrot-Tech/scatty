@@ -149,13 +149,82 @@ After initial testing, restrict CORS to your actual origins:
 
    Note: Mobile apps don't send Origin headers, so `*` is safe for mobile-only backends.
 
+### Step 5: Configure Custom Domain (api.scatty.xyz)
+
+To use `api.scatty.xyz` instead of the default Railway URL:
+
+#### In Railway Dashboard:
+
+1. Go to your Scatty service → **Settings** → **Domains**
+
+2. Click **"Add Custom Domain"**
+
+3. Enter: `api.scatty.xyz`
+
+4. Railway will show you the required DNS records
+
+#### In Your DNS Provider (e.g., Cloudflare, Namecheap):
+
+1. Add a **CNAME record**:
+   ```
+   Type: CNAME
+   Name: api
+   Target: <your-railway-url>.up.railway.app
+   TTL: Auto (or 300)
+   ```
+
+2. If using Cloudflare, set **Proxy status** to "DNS only" (gray cloud) initially for easier debugging
+
+3. Wait for DNS propagation (usually 5-30 minutes)
+
+#### Verify Custom Domain:
+
+```bash
+# Test the custom domain
+curl https://api.scatty.xyz/v1/health
+
+# Expected response:
+# {"status":"ok","version":"1.0.0","timestamp":...}
+```
+
+#### Update Mobile App Configuration:
+
+After custom domain is working, update `apps/mobile/eas.json`:
+
+```json
+{
+  "build": {
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_SERVER_URL": "https://api.scatty.xyz"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_SERVER_URL": "https://api.scatty.xyz"
+      }
+    }
+  }
+}
+```
+
+#### Update CORS Origins:
+
+Update Railway environment variables to include your domains:
+
+```
+ALLOWED_ORIGINS=https://scatty.xyz,https://app.scatty.xyz
+```
+
 ---
 
 ## EAS Build (Android App)
 
+> **Important:** This is a monorepo. All EAS commands must be run from the `apps/mobile` directory, not the repository root. Running from the root will cause "Unable to resolve module ../../App" errors.
+
 ### Step 1: Configure EAS Project
 
-1. **Update `app.json`** - Replace the placeholder EAS project ID:
+1. **Navigate to the mobile app directory:**
    ```bash
    cd apps/mobile
    ```
@@ -454,13 +523,18 @@ Before going to production:
 
 ### EAS Build Fails
 
+**Error: "Unable to resolve module ../../App"**
+- You ran EAS from the monorepo root instead of `apps/mobile`
+- Fix: `cd apps/mobile && eas build --platform android --profile preview`
+- Do NOT run EAS commands from the repository root
+
 **Error: "Missing icon.png"**
 - Create required assets (see Pre-Deployment Checklist)
 - Ensure files are in `apps/mobile/assets/`
 
 **Error: "Project not configured"**
-- Run `eas build:configure` first
-- Update `projectId` in `app.json`
+- Run `cd apps/mobile && eas build:configure` first
+- Update `projectId` in `apps/mobile/app.json`
 
 **Error: "Build queue timeout"**
 - EAS free tier has limited concurrent builds

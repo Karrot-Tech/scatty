@@ -61,10 +61,21 @@
           "microphonePermission": "Allow Scatty to access your microphone to hear you.",
           "speechRecognitionPermission": "Allow Scatty to use speech recognition."
         }
-      ]
+      ],
+      "./plugins/withAndroidManifestToolsReplace",
+      "./plugins/withAndroidSupportExclusions"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e00894d7-ae55-420e-980e-453362d2269e"
+      }
+    },
+    "owner": "pavanpaik2025"
   }
 }

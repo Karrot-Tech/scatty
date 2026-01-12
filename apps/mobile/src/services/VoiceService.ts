@@ -26,7 +26,7 @@ class VoiceService {
       // Check if Voice module is available (requires dev build)
       const available = await Voice.isAvailable();
       console.log('[VoiceService] Voice.isAvailable() returned:', available);
-      this.isAvailableFlag = available ?? false;
+      this.isAvailableFlag = !!available;
 
       if (this.isAvailableFlag) {
         console.log('[VoiceService] Setting up voice callbacks');
@@ -136,7 +136,7 @@ class VoiceService {
 
   async checkAvailable(): Promise<boolean> {
     try {
-      this.isAvailableFlag = await Voice.isAvailable() ?? false;
+      this.isAvailableFlag = !!(await Voice.isAvailable());
       return this.isAvailableFlag;
     } catch {
       this.isAvailableFlag = false;
@@ -166,15 +166,16 @@ class VoiceService {
     const errorCode = e.error?.code;
     const errorMessage = e.error?.message ?? 'Speech recognition error';
 
-    // Code 7 = ERROR_NO_MATCH (no speech detected) - not a real error
-    if (errorCode === '7' || errorCode === 7) {
+    // Normalize code to string. Code 7 = ERROR_NO_MATCH (no speech detected) - not a real error
+    const code = String(errorCode);
+    if (code === '7') {
       console.log('No speech detected');
       this.callbacks.onEnd?.();
       return;
     }
 
     // Code 5 = ERROR_CLIENT (usually permission or audio issue)
-    if (errorCode === '5' || errorCode === 5) {
+    if (code === '5') {
       console.log('[VoiceService] Client error - may need permission');
       this.callbacks.onError?.('Microphone access error. Please check permissions.');
       return;

@@ -85,7 +85,7 @@ export default function SettingsScreen() {
               style={styles.input}
               value={urlInput}
               onChangeText={setUrlInput}
-              placeholder="http://localhost:3001"
+              placeholder="https://scatty-production.up.railway.app"
               placeholderTextColor={colors.text.muted}
               autoCapitalize="none"
               autoCorrect={false}
@@ -140,10 +140,7 @@ export default function SettingsScreen() {
             <Text style={styles.infoLabel}>Version</Text>
             <Text style={styles.infoValue}>1.0.0</Text>
           </View>
-          <View style={styles.infoBox}>
-            <Text style={styles.infoLabel}>Powered by</Text>
-            <Text style={styles.infoValue}>🥕📡</Text>
-          </View>
+
         </View>
       </View>
     </SafeAreaView>

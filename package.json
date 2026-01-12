@@ -7,15 +7,22 @@
     "apps/*"
   ],
   "scripts": {
+    "postinstall": "npm run build:shared",
     "build:shared": "npm run build -w @scatty/shared",
     "build:server": "npm run build -w @scatty/server",
     "start:server": "npm run start -w @scatty/server",
     "server": "npm run dev -w @scatty/server",
     "mobile": "npm run start -w @scatty/mobile",
-    "dev": "concurrently \"npm run server\" \"npm run mobile\""
+    "dev": "concurrently \"npm run server\" \"npm run mobile\"",
+    "android": "npm run android -w @scatty/mobile",
+    "ios": "npm run ios -w @scatty/mobile"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "expo": "~52.0.0",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "@expo/metro-runtime": "~4.0.1"
   }
 }

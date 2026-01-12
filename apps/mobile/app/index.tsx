@@ -50,6 +50,7 @@ export default function HomeScreen() {
     connected,
     messages,
     currentResponse,
+    currentEmotion,
     liveTranscript,
     startListening,
     stopListening,
@@ -80,7 +81,7 @@ export default function HomeScreen() {
 
       {/* Avatar section */}
       <View style={styles.avatarSection}>
-        <ScattyAvatar state={state} />
+        <ScattyAvatar state={state} emotion={currentEmotion} />
         <View style={[styles.statusBubble, { backgroundColor: stateColor + '25' }]}>
           <Text style={[styles.statusText, { color: stateColor }]}>
             {STATE_LABELS[state]}

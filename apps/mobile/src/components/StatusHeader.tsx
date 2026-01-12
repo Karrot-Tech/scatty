@@ -59,10 +59,13 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   title: {
-    color: colors.text.primary,
-    fontSize: 18,
-    fontWeight: '700',
-    letterSpacing: 2,
+    color: colors.fairy.eyes, // Deep indigo/purple
+    fontSize: 22,
+    fontWeight: '800', // Extra bold
+    letterSpacing: 4, // Wider spacing for "premium" look
+    textShadowColor: colors.fairy.hairHighlight,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 0,
   },
   statusContainer: {
     flexDirection: 'row',
