@@ -23,20 +23,36 @@ interface VoicePickerProps {
 }
 
 function VoicePicker({ voices, selectedVoice, onSelectVoice }: VoicePickerProps) {
+    // Check if iOS Safari
+    const isIOSSafari = typeof navigator !== 'undefined' &&
+        /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+        /Safari/.test(navigator.userAgent) &&
+        !/Chrome|CriOS|FxiOS/.test(navigator.userAgent);
+
     return (
         <View style={styles.voiceList}>
-            <TouchableOpacity
-                style={[
-                    styles.voiceItem,
-                    selectedVoice === null && styles.voiceItemSelected,
-                ]}
-                onPress={() => onSelectVoice(null)}
-            >
-                <Text style={styles.voiceName}>Auto (Best Available)</Text>
-                {selectedVoice === null && (
-                    <Ionicons name="checkmark" size={20} color={colors.accent.success} />
-                )}
-            </TouchableOpacity>
+            {isIOSSafari && (
+                <View style={styles.iosWarning}>
+                    <Ionicons name="information-circle" size={16} color={colors.accent.warning} />
+                    <Text style={styles.iosWarningText}>
+                        iOS Safari requires selecting a specific voice
+                    </Text>
+                </View>
+            )}
+            {!isIOSSafari && (
+                <TouchableOpacity
+                    style={[
+                        styles.voiceItem,
+                        selectedVoice === null && styles.voiceItemSelected,
+                    ]}
+                    onPress={() => onSelectVoice(null)}
+                >
+                    <Text style={styles.voiceName}>Auto (Best Available)</Text>
+                    {selectedVoice === null && (
+                        <Ionicons name="checkmark" size={20} color={colors.accent.success} />
+                    )}
+                </TouchableOpacity>
+            )}
             {voices.map((voice) => (
                 <TouchableOpacity
                     key={voice.name}
@@ -71,11 +87,29 @@ export default function SettingsScreen() {
     const [voices, setVoices] = useState<VoiceInfo[]>([]);
 
     useEffect(() => {
+        // Check if iOS Safari
+        const isIOSSafari = typeof navigator !== 'undefined' &&
+            /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+            /Safari/.test(navigator.userAgent) &&
+            !/Chrome|CriOS|FxiOS/.test(navigator.userAgent);
+
         // Load voices - may need to wait for them to be available
         const loadVoices = () => {
             if (Platform.OS === 'web' && typeof ttsService !== 'undefined') {
                 const availableVoices = ttsService.getAvailableVoices();
                 setVoices(availableVoices);
+
+                // Auto-select Samantha on iOS Safari if no voice selected
+                if (isIOSSafari && !selectedVoice && availableVoices.length > 0) {
+                    const samantha = availableVoices.find(v => v.name === 'Samantha');
+                    if (samantha) {
+                        setSelectedVoice('Samantha');
+                        ttsService.setVoice('Samantha');
+                    } else if (availableVoices[0]) {
+                        setSelectedVoice(availableVoices[0].name);
+                        ttsService.setVoice(availableVoices[0].name);
+                    }
+                }
             }
         };
 
@@ -381,5 +415,19 @@ const styles = StyleSheet.create({
         color: colors.text.muted,
         fontSize: 14,
         fontStyle: 'italic',
+    },
+    iosWarning: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 12,
+        backgroundColor: colors.accent.warning + '20',
+        borderBottomWidth: 1,
+        borderBottomColor: colors.ui.border,
+        gap: 8,
+    },
+    iosWarningText: {
+        color: colors.text.secondary,
+        fontSize: 13,
+        flex: 1,
     },
 });

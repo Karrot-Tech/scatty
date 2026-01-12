@@ -114,6 +114,27 @@ class WebTTSService {
             }
         }
 
+        // iOS Safari MUST have an explicit voice - never return null
+        if (this.isIOSSafari()) {
+            // Try Samantha first (most natural iOS voice)
+            const samantha = voices.find(v => v.name === 'Samantha');
+            if (samantha) {
+                console.log('[WebTTS] iOS Safari: Using Samantha');
+                return samantha;
+            }
+            // Fall back to any English voice
+            const englishVoice = voices.find(v => v.lang.startsWith('en'));
+            if (englishVoice) {
+                console.log('[WebTTS] iOS Safari: Using', englishVoice.name);
+                return englishVoice;
+            }
+            // Last resort: first voice
+            if (voices.length > 0) {
+                console.log('[WebTTS] iOS Safari: Using first voice', voices[0].name);
+                return voices[0];
+            }
+        }
+
         // Try to find a preferred voice
         for (const preferredName of this.preferredVoices) {
             const match = voices.find(v =>
