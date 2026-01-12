@@ -29,7 +29,6 @@ export function useScatty() {
       }
 
       store.finalizeResponse();
-      store.setState('idle');
 
       // Apply emotion from response
       if (payload.emotion) {
@@ -37,7 +36,14 @@ export function useScatty() {
         store.setEmotion(payload.emotion);
       }
 
-      ttsService.speak(payload.fullText);
+      // Set state to speaking while TTS is active
+      store.setState('speaking');
+
+      // Speak and return to idle when done
+      ttsService.speak(payload.fullText, () => {
+        console.log('[Scatty] TTS finished, returning to idle');
+        store.setState('idle');
+      });
     });
 
     const unsubState = scattyClient.on('state:update', (payload: any) => {

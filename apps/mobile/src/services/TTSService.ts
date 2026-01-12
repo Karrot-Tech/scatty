@@ -65,21 +65,21 @@ class TTSService {
     return voices.find(v => v.lang.startsWith('en')) || voices[0] || null;
   }
 
-  async speak(text: string): Promise<void> {
+  async speak(text: string, onComplete?: () => void): Promise<void> {
     if (this.isSpeaking) {
       await this.stop();
     }
 
     // Use Web Speech API on web platform
     if (Platform.OS === 'web' && typeof window !== 'undefined' && window.speechSynthesis) {
-      return this.speakWeb(text);
+      return this.speakWeb(text, onComplete);
     }
 
     // Use expo-speech on native platforms
-    return this.speakNative(text);
+    return this.speakNative(text, onComplete);
   }
 
-  private speakWeb(text: string): Promise<void> {
+  private speakWeb(text: string, onComplete?: () => void): Promise<void> {
     return new Promise((resolve) => {
       this.isSpeaking = true;
       const utterance = new SpeechSynthesisUtterance(text);
@@ -100,12 +100,14 @@ class TTSService {
       utterance.onend = () => {
         console.log('[TTS Web] Speech ended');
         this.isSpeaking = false;
+        onComplete?.();
         resolve();
       };
 
       utterance.onerror = (event) => {
         console.error('[TTS Web] Speech error:', event.error);
         this.isSpeaking = false;
+        onComplete?.();
         resolve();
       };
 
@@ -123,7 +125,7 @@ class TTSService {
     });
   }
 
-  private speakNative(text: string): Promise<void> {
+  private speakNative(text: string, onComplete?: () => void): Promise<void> {
     console.log('[TTS Native] Speaking:', text.substring(0, 30) + '...');
 
     return new Promise((resolve) => {
@@ -135,14 +137,17 @@ class TTSService {
         rate: 0.9,
         onDone: () => {
           this.isSpeaking = false;
+          onComplete?.();
           resolve();
         },
         onError: () => {
           this.isSpeaking = false;
+          onComplete?.();
           resolve();
         },
         onStopped: () => {
           this.isSpeaking = false;
+          onComplete?.();
           resolve();
         },
       });
